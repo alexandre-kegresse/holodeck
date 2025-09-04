@@ -1,0 +1,11 @@
+[Unit]
+Description=Apply NAT iptables rules
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/etc/iptables-nat.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
