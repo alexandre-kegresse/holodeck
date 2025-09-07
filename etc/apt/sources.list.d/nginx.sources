@@ -1,0 +1,6 @@
+X-Repolib-Name: nginx
+Types: deb
+URIs: http://nginx.org/packages/mainline/debian
+Suites: trixie
+Components: nginx
+Signed-By: /usr/share/keyrings/nginx-archive-keyring.gpg
