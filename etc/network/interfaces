@@ -11,6 +11,6 @@ iface lo inet loopback
 allow-hotplug ens33
 iface ens33 inet dhcp
 
-allow-hotplug ens36
-iface ens36 inet static
+allow-hotplug ens34
+iface ens34 inet static
    address 192.168.15.254/24
