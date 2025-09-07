@@ -4,9 +4,9 @@ auto lo
 iface lo inet loopback
 
 # The primary network interface
-allow-hotplug ens33
-iface ens33 inet dhcp
+allow-hotplug ens32
+iface ens32 inet dhcp
 
-allow-hotplug ens34
-iface ens34 inet static
+allow-hotplug ens33
+iface ens33 inet static
    address 192.168.15.254/24
