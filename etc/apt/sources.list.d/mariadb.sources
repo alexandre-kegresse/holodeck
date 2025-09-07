@@ -1,0 +1,6 @@
+X-Repolib-Name: MariaDB
+Types: deb
+URIs: https://mirror.mva-n.net/mariadb/repo/12.1/debian
+Suites: trixie
+Components: main
+Signed-By: /usr/share/keyrings/mariadb-keyring.pgp
