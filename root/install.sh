@@ -13,9 +13,16 @@ sed -i "s/user  nginx;/user  www-data;/g"  /etc/nginx/nginx.conf
 
 cd /etc/ssl/starfleet
 # Créer la clé privée de la CA
-openssl genrsa -out starfleet-ca.key 4096
-openssl req -new -x509 -days 3650 -key starfleet-ca.key -out starfleet-ca.crt -subj "/C=FR/ST=PACA/L=Marseille/O=Starfleet Command/OU=IT Department/CN=Starfleet Root CA"
-openssl req -x509 -nodes -days 365 -newkey rsa:2048     -keyout starfleet-wildcard.key     -out starfleet-wildcard.crt     -config starfleet-wildcard.conf
+#openssl genrsa -out starfleet-ca.key 4096
+#openssl req -new -x509 -days 3650 -key starfleet-ca.key -out starfleet-ca.crt -subj "/C=FR/ST=PACA/L=Marseille/O=Starfleet Command/OU=IT Department/CN=Starfleet Root CA"
+#openssl req -x509 -nodes -days 365 -newkey rsa:2048     -keyout starfleet-wildcard.key     -out starfleet-wildcard.crt     -config starfleet-wildcard.conf
+
+openssl genrsa -out ca-starfleet-key.pem 4096
+openssl req -new -x509 -days 365 -key ca-starfleet-key.pem -sha256 -out ca.pem -subj "/C=FR/ST=PACA/L=Marseille/O=VotreEntreprise/CN=Internal CA"
+openssl genrsa -out starfleet.lan-key.pem 4096
+openssl req -subj "/CN=starfleet.lan" -sha256 -new -key starfleet.lan-key.pem -out starfleet.lan.csr
+echo "subjectAltName=DNS:starfleet.lan,DNS:*.starfleet.lan,IP:192.168.15.254" > extfile.cnf
+openssl x509 -req -days 365 -sha256 -in starfleet.lan.csr -CA ca.pem -CAkey ca-starfleet-key.pem -out starfleet.lan-cert.pem -extfile extfile.cnf -CAcreateserial
 
 cd /var/www
 wget https://files.phpmyadmin.net/phpMyAdmin/5.2.2/phpMyAdmin-5.2.2-all-languages.zip
