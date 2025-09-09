@@ -3,9 +3,10 @@
 ## Préparation de la VM
 - 2 Vcpu
 - 2 Go RAM
-- 8 Go Disque
+- 20 Go Disque
 - 1 carte réseau NAT ( WAN )
 - 1 carte reseau Host only ( DHCP désactivé ) (LAN )  
+- 
 
 ## Installation   
  - Debian 13 de base sans GUI
